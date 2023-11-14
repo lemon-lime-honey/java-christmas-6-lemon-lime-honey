@@ -51,6 +51,18 @@ class OrderInputTest extends NsTest {
         });
     }
 
+    @DisplayName("주문 입력: 중복 메뉴")
+    @Test
+    void duplicatedMenu() {
+        String input = "해산물파스타-1,크라스마스파스타-2,해산물파스타-3";
+
+        assertSimpleTest(() -> {
+            run(input, stop);
+            assertThat(output())
+                .contains("[ERROR]");
+        });
+    }
+
 
     @Override
     public void runMain() {
