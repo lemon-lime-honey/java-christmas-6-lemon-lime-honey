@@ -1,7 +1,10 @@
 package christmas;
 
+import christmas.userinput.Input;
+
 public class Application {
+    private static Input input = new Input();
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        input.run();
     }
 }
