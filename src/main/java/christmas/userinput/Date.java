@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Date {
     private int date;
     private String day;
-    private String[] days = {"금", "토", "일", "월", "화", "수", "목"};
+    private String[] days = {"목", "금", "토", "일", "월", "화", "수"};
 
     private void dateInput() {
         String ipt = Console.readLine();
@@ -20,6 +20,7 @@ public class Date {
     }
 
     public void saveDate() {
+        System.out.println(Message.INIT.getMessage());
         while (true) {
             try {
                 dateInput();

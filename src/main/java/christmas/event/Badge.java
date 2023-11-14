@@ -21,15 +21,4 @@ public enum Badge {
     public int getLimit() {
         return this.limit;
     }
-
-    public Badge findByLimit(int value) {
-        Badge result = null;
-        for (Badge badge: values()) {
-            if (value > badge.getLimit()) {
-                result = badge;
-                break;
-            }
-        }
-        return result;
-    }
 }
