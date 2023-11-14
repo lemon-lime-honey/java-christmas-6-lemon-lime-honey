@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Date {
     private int date;
+    private String day;
+    private String[] days = {"금", "토", "일", "월", "화", "수", "목"};
 
     private void dateInput() {
         String ipt = Console.readLine();
@@ -21,6 +23,7 @@ public class Date {
         while (true) {
             try {
                 dateInput();
+                setDay();
                 break;
             } catch (NumberFormatException e) {
                 System.out.println(e.getMessage());
@@ -30,7 +33,15 @@ public class Date {
         }
     }
 
+    public void setDay() {
+        this.day = days[this.date % 7];
+    }
+
     public int getDate() {
         return this.date;
+    }
+
+    public String getDay() {
+        return this.day;
     }
 }
