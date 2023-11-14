@@ -1,4 +1,4 @@
-package christmas.menu;
+package christmas.order;
 
 public enum Menu {
     SOUP("애피타이저", "양송이수프", 6000),
@@ -34,5 +34,16 @@ public enum Menu {
 
     public int getCost() {
         return this.cost;
+    }
+
+    public static Menu findByName(String value) {
+        Menu result = null;
+        for (Menu menu: values()) {
+            if (menu.getName().equals(value)) {
+                result = menu;
+                break;
+            }
+        }
+        return result;
     }
 }
