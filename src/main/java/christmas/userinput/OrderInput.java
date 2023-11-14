@@ -1,12 +1,14 @@
 package christmas.userinput;
 
+import java.util.Map;
+import java.util.NoSuchElementException;
 import camp.nextstep.edu.missionutils.Console;
 
 import christmas.order.Menu;
 import christmas.order.Order;
 
 public class OrderInput {
-    Order orderData = new Order();
+    Order orderData;
     String pattern = "^[가-힣]+-[0-9]+$";
 
     public void order() {
@@ -17,9 +19,10 @@ public class OrderInput {
     private void input() {
         while (true) {
             try {
+                orderData = new Order();
                 getInput();
                 break;
-            } catch (NullPointerException e) {
+            } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -47,18 +50,31 @@ public class OrderInput {
             throw new ArrayIndexOutOfBoundsException(Error.MENU_WRONG_STYLE.getMessage());
         }
         processData(data);
+        canOrder();
     }
 
     private void processData(String data) {
         String[] splittedData = data.split("-");
         Menu menu = Menu.findByName(splittedData[0]);
         int quantity = Integer.parseInt(splittedData[1]);
-        if (menu == null) {
-            throw new NullPointerException(Error.MENU_NOT_EXIST.getMessage());
-        }
         if (quantity < 1) {
             throw new IllegalArgumentException(Error.MENU_WRONG_NUMBER.getMessage());
         }
         this.orderData.saveOrder(menu, quantity);
+    }
+
+    private void canOrder() {
+        int total = 0;
+        boolean flag = false;
+        for (Map.Entry<Menu, Integer> entry: orderData.getOrder().entrySet()) {
+            total += entry.getValue();
+            if (!flag && !entry.getKey().getType().equals("음료")) flag = true;
+        }
+        if (total > 20) {
+            throw new IllegalArgumentException(Error.MENU_TOO_MANY.getMessage());
+        }
+        if (!flag) {
+            throw new IllegalArgumentException(Error.MENU_ONLY_DRINK.getMessage());
+        }
     }
 }

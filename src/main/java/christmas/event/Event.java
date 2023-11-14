@@ -17,13 +17,22 @@ public class Event {
     private int discountCost;
     private int money;
 
-    private void discount(Date date, Map<Menu, Integer> order) {
+    private void discount(Date date, Order order) {
         int result = 0;
-        result += xmas.discount(date.getDate());
-        result += weekday.discount(order, date.getDay());
-        result += weekend.discount(order, date.getDay());
-        result += special.discount(date.getDate(), date.getDay());
+        if (canRun(order)) {
+            result += xmas.discount(date.getDate());
+            result += weekday.discount(order.getOrder(), date.getDay());
+            result += weekend.discount(order.getOrder(), date.getDay());
+            result += special.discount(date.getDate(), date.getDay());
+        }
         this.discountCost = result;
+    }
+
+    private boolean canRun(Order order) {
+        if (order.getTotal() < 10000) {
+            return false;
+        }
+        return true;
     }
 
     private void afterDiscount(Date date, Order order) {
@@ -56,7 +65,7 @@ public class Event {
 
     public void eventRunner(Date date, Order order) {
         order.calculate();
-        discount(date, order.getOrder());
+        discount(date, order);
         afterDiscount(date, order);
         checkGift(order);
         badge(order);

@@ -1,5 +1,8 @@
 package christmas.order;
 
+import java.util.NoSuchElementException;
+import christmas.userinput.Error;
+
 public enum Menu {
     SOUP("애피타이저", "양송이수프", 6000),
     TAPAS("애피타이저", "타파스", 5500),
@@ -37,13 +40,11 @@ public enum Menu {
     }
 
     public static Menu findByName(String value) {
-        Menu result = null;
         for (Menu menu: values()) {
             if (menu.getName().equals(value)) {
-                result = menu;
-                break;
+                return menu;
             }
         }
-        return result;
+        throw new NoSuchElementException(Error.MENU_NOT_EXIST.getMessage());
     }
 }

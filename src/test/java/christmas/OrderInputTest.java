@@ -1,7 +1,6 @@
 package christmas;
 
 import christmas.userinput.OrderInput;
-import christmas.order.Menu;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 
@@ -13,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class OrderInputTest extends NsTest {
     private static OrderInput orderInput;
-    private static final String stop = "샴페인-1";
+    private static final String stop = "크리스마스파스타-1";
 
     @DisplayName("주문 입력: -로 메뉴와 수량을 구분하지 않았을 때")
     @Test
@@ -63,6 +62,41 @@ class OrderInputTest extends NsTest {
         });
     }
 
+    @DisplayName("주문 입력: 수량 20 초과")
+    @Test
+    void tooMany() {
+        String input = "초코케이크-10,아이스크림-10,제로콜라-10,레드와인-10";
+
+        assertSimpleTest(() -> {
+            run(input, stop);
+            assertThat(output())
+                .contains("[ERROR]");
+        });
+    }
+    
+    @DisplayName("주문 입력: 음료만 주문")
+    @Test
+    void onlyDrink() {
+        String input = "샴페인-10";
+
+        assertSimpleTest(() -> {
+            run(input, stop);
+            assertThat(output())
+                .contains("[ERROR]");
+        });
+    }
+
+    @DisplayName("주문 입력: 메뉴판에 없는 메뉴 주문")
+    @Test
+    void notFromMenu() {
+        String input = "닭칼국수-1";
+
+        assertSimpleTest(() -> {
+            run(input, stop);
+            assertThat(output())
+                .contains("[ERROR]");
+        });
+    }
 
     @Override
     public void runMain() {
