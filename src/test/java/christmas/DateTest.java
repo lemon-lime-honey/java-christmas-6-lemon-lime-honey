@@ -41,6 +41,6 @@ class DateTest extends NsTest {
     @Override
     public void runMain() {
         date = new Date();
-        date.getDate();
+        date.saveDate();
     }
 }

@@ -5,6 +5,6 @@ public class Input {
 
     public void run() {
         System.out.println(Message.INIT.getMessage());
-        int date = dateInput.getDate();
+        dateInput.saveDate();
     }
 }
