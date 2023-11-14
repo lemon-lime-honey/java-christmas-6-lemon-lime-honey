@@ -1,13 +1,14 @@
 package christmas;
 
+import christmas.output.Output;
 import christmas.userinput.Input;
-import christmas.userinput.OrderInput;
 
 public class Application {
     private static Input input = new Input();
-    private static OrderInput orderInput = new OrderInput();
+    private static Output output = new Output();
+
     public static void main(String[] args) {
         input.run();
-        orderInput.order();
+        output.run(input.getOrder(), input.getDate());
     }
 }
