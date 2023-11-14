@@ -11,9 +11,10 @@ public class OrderInput {
     Order orderData;
     String pattern = "^[가-힣]+-[0-9]+$";
 
-    public void order() {
+    public Order order() {
         System.out.println(Message.ORDER.getMessage());
         input();
+        return orderData;
     }
 
     private void input() {
@@ -21,6 +22,7 @@ public class OrderInput {
             try {
                 orderData = new Order();
                 getInput();
+                orderData.calculate();
                 break;
             } catch (NoSuchElementException e) {
                 System.out.println(e.getMessage());

@@ -1,10 +1,22 @@
 package christmas.userinput;
 
+import christmas.order.Order;
+
 public class Input {
-    private Date dateInput = new Date();
+    private Date date = new Date();
+    private OrderInput orderInput = new OrderInput();
+    private Order order;
 
     public void run() {
-        System.out.println(Message.INIT.getMessage());
-        dateInput.saveDate();
+        date.saveDate();
+        this.order = orderInput.order();
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+
+    public Order getOrder() {
+        return this.order;
     }
 }
