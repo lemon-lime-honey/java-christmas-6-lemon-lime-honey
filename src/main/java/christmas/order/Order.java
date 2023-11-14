@@ -1,5 +1,7 @@
 package christmas.order;
 
+import christmas.userinput.Error;
+
 import java.util.EnumMap;
 
 public class Order {
@@ -7,8 +9,7 @@ public class Order {
 
     public void saveOrder(Menu menu, int quantity) {
         if (order.containsKey(menu)) {
-            order.put(menu, order.get(menu) + quantity);
-            return;
+            throw new IllegalArgumentException(Error.MENU_DUPLICATE.getMessage());
         }
         order.put(menu, quantity);
     }
