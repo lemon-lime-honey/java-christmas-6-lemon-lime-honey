@@ -7,6 +7,11 @@ public class Date {
     private String day;
     private String[] days = {"목", "금", "토", "일", "월", "화", "수"};
 
+    public boolean setDate() {
+        System.out.println(Message.INIT.getMessage());
+        return saveDate();
+    }
+
     private boolean dateInput() {
         String ipt = Console.readLine();
         try {
@@ -21,8 +26,7 @@ public class Date {
         }
     }
 
-    public boolean saveDate() {
-        System.out.println(Message.INIT.getMessage());
+    private boolean saveDate() {
         while (true) {
             try {
                 dateInput();
@@ -36,7 +40,7 @@ public class Date {
         }
     }
 
-    public void setDay() {
+    private void setDay() {
         this.day = days[this.date % 7];
     }
 

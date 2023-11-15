@@ -8,7 +8,7 @@ public class Input {
     private Order order;
 
     public boolean run() {
-        if (!date.saveDate()) return false;
+        if (!date.setDate()) return false;
         if (!orderInput.order()) return false;
         this.order = orderInput.getOrder();
         return true;
