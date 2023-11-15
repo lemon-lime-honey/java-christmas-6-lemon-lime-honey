@@ -12,7 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class OrderInputTest extends NsTest {
     private static OrderInput orderInput;
-    private static final String stop = "크리스마스파스타-1";
 
     @DisplayName("주문 입력: -로 메뉴와 수량을 구분하지 않았을 때")
     @Test
@@ -20,7 +19,7 @@ class OrderInputTest extends NsTest {
         String input = "양송이수프1";
 
         assertSimpleTest(() -> {
-            run(input, stop);
+            runException(input);
             assertThat(output())
                 .contains("[ERROR]");
         });
@@ -32,7 +31,7 @@ class OrderInputTest extends NsTest {
         String input = "타파스-2 시저샐러드-3";
 
         assertSimpleTest(() -> {
-            run(input, stop);
+            runException(input);
             assertThat(output())
                 .contains("[ERROR]");
         });
@@ -44,7 +43,7 @@ class OrderInputTest extends NsTest {
         String input = "티본스테이크-0,바비큐립-1";
 
         assertSimpleTest(() -> {
-            run(input, stop);
+            runException(input);
             assertThat(output())
                 .contains("[ERROR]");
         });
@@ -56,7 +55,7 @@ class OrderInputTest extends NsTest {
         String input = "해산물파스타-1,크라스마스파스타-2,해산물파스타-3";
 
         assertSimpleTest(() -> {
-            run(input, stop);
+            runException(input);
             assertThat(output())
                 .contains("[ERROR]");
         });
@@ -68,7 +67,7 @@ class OrderInputTest extends NsTest {
         String input = "초코케이크-10,아이스크림-10,제로콜라-10,레드와인-10";
 
         assertSimpleTest(() -> {
-            run(input, stop);
+            runException(input);
             assertThat(output())
                 .contains("[ERROR]");
         });
@@ -80,7 +79,7 @@ class OrderInputTest extends NsTest {
         String input = "샴페인-10";
 
         assertSimpleTest(() -> {
-            run(input, stop);
+            runException(input);
             assertThat(output())
                 .contains("[ERROR]");
         });
@@ -92,9 +91,20 @@ class OrderInputTest extends NsTest {
         String input = "닭칼국수-1";
 
         assertSimpleTest(() -> {
-            run(input, stop);
+            runException(input);
             assertThat(output())
                 .contains("[ERROR]");
+        });
+    }
+
+    @DisplayName("주문 입력: 정상")
+    @Test
+    void plainInput() {
+        String input = "크리스마스파스타-1,레드와인-1";
+
+        assertSimpleTest(() -> {
+            run(input);
+            assertThat(output());
         });
     }
 
