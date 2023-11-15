@@ -1,4 +1,4 @@
-package christmas.userinput;
+package christmas.input;
 
 import java.util.Map;
 import java.util.NoSuchElementException;

@@ -3,8 +3,8 @@ package christmas.event;
 import java.util.Map;
 
 import christmas.order.Order;
+import christmas.input.Date;
 import christmas.order.Menu;
-import christmas.userinput.Date;
 
 public class Event {
     private static final int eventCostLimit = 10000;

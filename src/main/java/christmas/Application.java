@@ -1,7 +1,7 @@
 package christmas;
 
+import christmas.input.Input;
 import christmas.output.Output;
-import christmas.userinput.Input;
 
 public class Application {
     private static Input input = new Input();

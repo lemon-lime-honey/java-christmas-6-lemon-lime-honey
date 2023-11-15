@@ -1,9 +1,7 @@
 package christmas;
 
-import christmas.userinput.OrderInput;
-
 import camp.nextstep.edu.missionutils.test.NsTest;
-
+import christmas.input.OrderInput;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

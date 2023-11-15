@@ -6,8 +6,8 @@ import christmas.event.Badge;
 import christmas.event.Event;
 import christmas.event.EventData;
 import christmas.event.EventType;
-import christmas.userinput.Date;
-import christmas.userinput.Message;
+import christmas.input.Date;
+import christmas.input.Message;
 import christmas.order.Menu;
 import christmas.order.Order;
 

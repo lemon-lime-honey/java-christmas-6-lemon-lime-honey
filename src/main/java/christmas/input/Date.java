@@ -1,4 +1,4 @@
-package christmas.userinput;
+package christmas.input;
 
 import camp.nextstep.edu.missionutils.Console;
 

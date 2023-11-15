@@ -5,8 +5,7 @@ import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Set;
-
-import christmas.userinput.Date;
+import christmas.input.Date;
 import christmas.order.Menu;
 import christmas.order.Order;
 

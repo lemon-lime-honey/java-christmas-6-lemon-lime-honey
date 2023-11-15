@@ -1,9 +1,8 @@
 package christmas.order;
 
-import christmas.userinput.Error;
-
 import java.util.EnumMap;
 import java.util.Map;
+import christmas.input.Error;
 
 public class Order {
     private Map<Menu, Integer> order = new EnumMap<>(Menu.class);

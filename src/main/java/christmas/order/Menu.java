@@ -1,7 +1,7 @@
 package christmas.order;
 
 import java.util.NoSuchElementException;
-import christmas.userinput.Error;
+import christmas.input.Error;
 
 public enum Menu {
     SOUP("애피타이저", "양송이수프", 6000),

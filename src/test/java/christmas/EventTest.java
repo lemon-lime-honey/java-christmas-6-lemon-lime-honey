@@ -6,10 +6,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import christmas.event.Event;
+import christmas.input.Date;
 import christmas.order.Menu;
 import christmas.order.Order;
-import christmas.userinput.Date;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -20,6 +19,7 @@ class EventTest {
     static Date date;
     static Order order;
     static Event event;
+    InputStream in;
 
     @DisplayName("이벤트: 주문 금액 만 원 미만")
     @Test
@@ -58,9 +58,8 @@ class EventTest {
     }
 
     void util(int number, Menu menu1, int quantity1, Menu menu2, int quantity2) {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        InputStream in = new ByteArrayInputStream(Integer.toString(number).getBytes());
+        
+        in = new ByteArrayInputStream(Integer.toString(number).getBytes());
         System.setIn(in);
         date.setDate();
         order.saveOrder(menu1, quantity1);
@@ -71,6 +70,8 @@ class EventTest {
 
     @BeforeAll
     static void run() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
         date = new Date();
         order = new Order();
         event = new Event();
