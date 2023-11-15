@@ -29,9 +29,9 @@ public class EventData {
 
     private void weekday(Map<Menu, Integer> order, String day) {
         Set<String> days = new HashSet<>(Constants.WEEKDAY);
-        if (!days.contains(day))
+        if (!days.contains(day)) {
             return;
-
+        }
         int total = 0;
         for (Map.Entry<Menu, Integer> entry : order.entrySet()) {
             if (entry.getKey().getType().equals(Constants.WEEKDAYCRITERIA)) {
@@ -45,9 +45,9 @@ public class EventData {
 
     private void weekend(Map<Menu, Integer> order, String day) {
         Set<String> days = new HashSet<>(Constants.WEEKEND);
-        if (!days.contains(day))
+        if (!days.contains(day)) {
             return;
-
+        }
         int total = 0;
         for (Map.Entry<Menu, Integer> entry : order.entrySet()) {
             if (entry.getKey().getType().equals(Constants.WEEKENDCRITERIA)) {
@@ -66,8 +66,9 @@ public class EventData {
     }
 
     private void gift(int cost) {
-        if (cost < Constants.GIFTCRITERIA)
+        if (cost < Constants.GIFTCRITERIA) {
             return;
+        }
         this.eventData.put(EventType.GIFT, EventType.GIFT.getCost());
     }
 

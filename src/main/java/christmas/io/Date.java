@@ -18,8 +18,9 @@ public class Date {
     private boolean dateInput() {
         String ipt = Console.readLine();
         try {
-            if (ipt.isBlank())
+            if (ipt.isBlank()) {
                 return false;
+            }
             this.date = Integer.parseInt(ipt);
             if (this.date < 1 || this.date > 31) {
                 throw new IllegalArgumentException(Error.DATE_WRONG_NUMBER.getMessage());

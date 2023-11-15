@@ -24,7 +24,6 @@ public class OrderInput {
             try {
                 orderData = new Order();
                 getInput();
-                orderData.calculate();
                 return true;
             } catch (NoSuchElementException e) {
                 return false;
@@ -43,6 +42,7 @@ public class OrderInput {
             for (String data : rawData) {
                 save(data.trim());
             }
+            orderData.calculate();
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new ArrayIndexOutOfBoundsException(Error.MENU_WRONG_STYLE.getMessage());
         }

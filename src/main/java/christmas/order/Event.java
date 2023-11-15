@@ -24,8 +24,9 @@ public class Event {
     }
 
     private boolean canRun(Order order) {
-        if (order.getTotal() < Constants.EVENTCOSTCRITERIA)
+        if (order.getTotal() < Constants.EVENTCOSTCRITERIA) {
             return false;
+        }
         return true;
     }
 
