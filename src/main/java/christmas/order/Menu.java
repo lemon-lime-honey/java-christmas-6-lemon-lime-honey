@@ -46,6 +46,6 @@ public enum Menu {
                 return menu;
             }
         }
-        throw new NoSuchElementException(Error.MENU_NOT_EXIST.getMessage());
+        throw new IllegalArgumentException(Error.MENU_NOT_EXIST.getMessage());
     }
 }

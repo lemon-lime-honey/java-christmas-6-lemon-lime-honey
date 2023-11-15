@@ -7,9 +7,11 @@ public class Input {
     private OrderInput orderInput = new OrderInput();
     private Order order;
 
-    public void run() {
-        date.saveDate();
-        this.order = orderInput.order();
+    public boolean run() {
+        if (!date.saveDate()) return false;
+        if (!orderInput.order()) return false;
+        this.order = orderInput.getOrder();
+        return true;
     }
 
     public Date getDate() {

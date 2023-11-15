@@ -11,21 +11,20 @@ public class OrderInput {
     Order orderData;
     String pattern = "^[가-힣]+-[0-9]+$";
 
-    public Order order() {
+    public boolean order() {
         System.out.println(Message.ORDER.getMessage());
-        input();
-        return orderData;
+        return input();
     }
 
-    private void input() {
+    private boolean input() {
         while (true) {
             try {
                 orderData = new Order();
                 getInput();
                 orderData.calculate();
-                break;
+                return true;
             } catch (NoSuchElementException e) {
-                System.out.println(e.getMessage());
+                return false;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -44,7 +43,6 @@ public class OrderInput {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new ArrayIndexOutOfBoundsException(Error.MENU_WRONG_STYLE.getMessage());
         }
-        
     }
 
     private void save(String data) {
@@ -78,5 +76,9 @@ public class OrderInput {
         if (!flag) {
             throw new IllegalArgumentException(Error.MENU_ONLY_DRINK.getMessage());
         }
+    }
+
+    public Order getOrder() {
+        return this.orderData;
     }
 }
