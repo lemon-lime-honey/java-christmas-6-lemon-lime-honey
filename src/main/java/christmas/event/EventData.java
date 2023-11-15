@@ -23,7 +23,7 @@ public class EventData {
 
     private void xmas(int date) {
         if (date < 26) {
-            this.eventData.put(EventType.XMAS, 900 + 100 * date);
+            this.eventData.put(EventType.XMAS, EventType.XMAS.getCost(date));
         }
     }
 
@@ -34,7 +34,7 @@ public class EventData {
         int total = 0;
         for (Map.Entry<Menu, Integer> entry: order.entrySet()) {
             if (entry.getKey().getType().equals("디저트")) {
-                total += 2023 * entry.getValue();
+                total += EventType.WEEKDAY.getCost() * entry.getValue();
             }
         }
         if (total != 0) {
@@ -49,7 +49,7 @@ public class EventData {
         int total = 0;
         for (Map.Entry<Menu, Integer> entry: order.entrySet()) {
             if (entry.getKey().getType().equals("메인")) {
-                total += 2023 * entry.getValue();
+                total += EventType.WEEKEND.getCost() * entry.getValue();
             }
         }
         if (total != 0) {
@@ -59,13 +59,13 @@ public class EventData {
 
     private void special(int date, String day) {
         if (day.equals("일") || date == 25) {
-            this.eventData.put(EventType.SPECIAL, 1000);
+            this.eventData.put(EventType.SPECIAL, EventType.SPECIAL.getCost());
         }
     }
 
     private void gift(int cost) {
         if (cost < 120000) return;
-        this.eventData.put(EventType.GIFT, Menu.GIFT.getCost());
+        this.eventData.put(EventType.GIFT, EventType.GIFT.getCost());
     }
 
     public Map<EventType, Integer> getData() {

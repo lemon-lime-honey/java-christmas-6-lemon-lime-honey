@@ -7,6 +7,7 @@ import christmas.order.Menu;
 import christmas.userinput.Date;
 
 public class Event {
+    private static final int eventCostLimit = 10000;
     private EventData eventData = new EventData();
     private Badge badge;
     private int discount = 0;
@@ -22,7 +23,7 @@ public class Event {
     }
 
     private boolean canRun(Order order) {
-        if (order.getTotal() < 10000) {
+        if (order.getTotal() < eventCostLimit) {
             return false;
         }
         return true;
