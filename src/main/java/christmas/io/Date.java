@@ -1,8 +1,9 @@
 package christmas.io;
 
+import christmas.constant.Error;
+import christmas.constant.Message;
+
 import camp.nextstep.edu.missionutils.Console;
-import christmas.enums.Error;
-import christmas.enums.Message;
 
 public class Date {
     private int date;

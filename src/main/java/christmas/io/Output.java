@@ -2,9 +2,9 @@ package christmas.io;
 
 import java.util.Map;
 
-import christmas.enums.EventType;
-import christmas.enums.Menu;
-import christmas.enums.Message;
+import christmas.constant.EventType;
+import christmas.constant.Menu;
+import christmas.constant.Message;
 import christmas.order.Event;
 import christmas.order.Order;
 

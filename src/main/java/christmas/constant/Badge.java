@@ -1,4 +1,4 @@
-package christmas.enums;
+package christmas.constant;
 
 public enum Badge {
     SANTA("산타", 20000),

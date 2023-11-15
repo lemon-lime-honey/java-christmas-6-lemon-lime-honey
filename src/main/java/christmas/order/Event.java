@@ -2,9 +2,9 @@ package christmas.order;
 
 import java.util.Map;
 
-import christmas.enums.Badge;
-import christmas.enums.EventType;
-import christmas.enums.Menu;
+import christmas.constant.Badge;
+import christmas.constant.EventType;
+import christmas.constant.Menu;
 import christmas.io.Date;
 
 public class Event {

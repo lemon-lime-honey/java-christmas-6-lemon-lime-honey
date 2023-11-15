@@ -6,8 +6,8 @@ import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import christmas.enums.EventType;
-import christmas.enums.Menu;
+import christmas.constant.EventType;
+import christmas.constant.Menu;
 import christmas.io.Date;
 
 public class EventData {

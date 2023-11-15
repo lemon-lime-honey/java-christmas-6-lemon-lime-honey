@@ -1,6 +1,4 @@
-package christmas.enums;
-
-import java.util.NoSuchElementException;
+package christmas.constant;
 
 public enum Menu {
     SOUP("애피타이저", "양송이수프", 6000),

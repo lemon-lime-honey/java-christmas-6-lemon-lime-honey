@@ -3,9 +3,9 @@ package christmas.io;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import christmas.enums.Error;
-import christmas.enums.Menu;
-import christmas.enums.Message;
+import christmas.constant.Error;
+import christmas.constant.Menu;
+import christmas.constant.Message;
 import christmas.order.Order;
 
 import camp.nextstep.edu.missionutils.Console;

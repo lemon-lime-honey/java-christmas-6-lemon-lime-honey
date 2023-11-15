@@ -3,8 +3,8 @@ package christmas.order;
 import java.util.EnumMap;
 import java.util.Map;
 
-import christmas.enums.Error;
-import christmas.enums.Menu;
+import christmas.constant.Error;
+import christmas.constant.Menu;
 
 public class Order {
     private Map<Menu, Integer> order = new EnumMap<>(Menu.class);
