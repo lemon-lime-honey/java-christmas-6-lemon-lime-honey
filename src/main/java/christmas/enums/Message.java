@@ -1,4 +1,4 @@
-package christmas.input;
+package christmas.enums;
 
 import java.text.DecimalFormat;
 

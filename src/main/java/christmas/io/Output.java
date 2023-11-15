@@ -1,14 +1,11 @@
-package christmas.output;
+package christmas.io;
 
 import java.util.Map;
 
-import christmas.event.Badge;
-import christmas.event.Event;
-import christmas.event.EventData;
-import christmas.event.EventType;
-import christmas.input.Date;
-import christmas.input.Message;
-import christmas.order.Menu;
+import christmas.enums.EventType;
+import christmas.enums.Menu;
+import christmas.enums.Message;
+import christmas.order.Event;
 import christmas.order.Order;
 
 public class Output {
@@ -31,8 +28,9 @@ public class Output {
     private void printOrder(Map<Menu, Integer> order) {
         System.out.println();
         System.out.println(Message.ORDERED_MENU.getMessage());
-        for (Map.Entry<Menu, Integer> entry: order.entrySet()) {
-            System.out.println(Message.ORDER_DETAIL.getMessage(entry.getKey().getName(), entry.getValue()));
+        for (Map.Entry<Menu, Integer> entry : order.entrySet()) {
+            System.out.println(
+                    Message.ORDER_DETAIL.getMessage(entry.getKey().getName(), entry.getValue()));
         }
     }
 
@@ -59,8 +57,9 @@ public class Output {
             System.out.println(Message.NONE.getMessage());
             return;
         }
-        for (Map.Entry<EventType, Integer> entry: data.entrySet()) {
-            System.out.println(Message.BENEFIT.getMessage(entry.getKey().getName(), entry.getValue()));
+        for (Map.Entry<EventType, Integer> entry : data.entrySet()) {
+            System.out.println(
+                    Message.BENEFIT.getMessage(entry.getKey().getName(), entry.getValue()));
         }
     }
 

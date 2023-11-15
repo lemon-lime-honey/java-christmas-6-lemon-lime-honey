@@ -1,6 +1,4 @@
-package christmas.event;
-
-import christmas.order.Menu;
+package christmas.enums;
 
 public enum EventType {
     XMAS("크리스마스 디데이 할인", 900),

@@ -1,10 +1,11 @@
-package christmas.event;
+package christmas.order;
 
 import java.util.Map;
 
-import christmas.order.Order;
-import christmas.input.Date;
-import christmas.order.Menu;
+import christmas.enums.Badge;
+import christmas.enums.EventType;
+import christmas.enums.Menu;
+import christmas.io.Date;
 
 public class Event {
     private static final int eventCostLimit = 10000;
@@ -17,19 +18,18 @@ public class Event {
         if (canRun(order)) {
             eventData.evalData(order, date);
         }
-        for (Map.Entry<EventType, Integer> entry: eventData.getData().entrySet()) {
+        for (Map.Entry<EventType, Integer> entry : eventData.getData().entrySet()) {
             this.discount += entry.getValue();
         }
     }
 
     private boolean canRun(Order order) {
-        if (order.getTotal() < eventCostLimit) {
+        if (order.getTotal() < eventCostLimit)
             return false;
-        }
         return true;
     }
 
-    private void afterDiscount(Date date, Order order) {
+    private void afterDiscount(Order order) {
         this.discounted = order.getTotal() - this.discount;
         if (eventData.getData().containsKey(EventType.GIFT)) {
             this.discounted += Menu.GIFT.getCost();
@@ -46,7 +46,7 @@ public class Event {
 
     private Badge findBadge(int value) {
         Badge result = Badge.NONE;
-        for (Badge badge: Badge.values()) {
+        for (Badge badge : Badge.values()) {
             if (value > badge.getLimit()) {
                 result = badge;
                 break;
@@ -73,7 +73,7 @@ public class Event {
 
     public void eventRunner(Date date, Order order) {
         runDiscount(date, order);
-        afterDiscount(date, order);
+        afterDiscount(order);
         badge(order);
     }
 }

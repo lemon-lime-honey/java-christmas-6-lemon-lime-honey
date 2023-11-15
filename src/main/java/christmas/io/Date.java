@@ -1,6 +1,8 @@
-package christmas.input;
+package christmas.io;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.enums.Error;
+import christmas.enums.Message;
 
 public class Date {
     private int date;
@@ -15,7 +17,8 @@ public class Date {
     private boolean dateInput() {
         String ipt = Console.readLine();
         try {
-            if (ipt.isBlank()) return false;
+            if (ipt.isBlank())
+                return false;
             this.date = Integer.parseInt(ipt);
             if (this.date < 1 || this.date > 31) {
                 throw new IllegalArgumentException(Error.DATE_WRONG_NUMBER.getMessage());

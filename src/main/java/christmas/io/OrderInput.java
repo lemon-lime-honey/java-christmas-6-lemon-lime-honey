@@ -1,11 +1,14 @@
-package christmas.input;
+package christmas.io;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
-import camp.nextstep.edu.missionutils.Console;
 
-import christmas.order.Menu;
+import christmas.enums.Error;
+import christmas.enums.Menu;
+import christmas.enums.Message;
 import christmas.order.Order;
+
+import camp.nextstep.edu.missionutils.Console;
 
 public class OrderInput {
     Order orderData;
@@ -37,7 +40,7 @@ public class OrderInput {
         try {
             String ipt = Console.readLine();
             String[] rawData = ipt.split(",");
-            for (String data: rawData) {
+            for (String data : rawData) {
                 save(data);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -66,9 +69,10 @@ public class OrderInput {
     private void canOrder() {
         int total = 0;
         boolean flag = false;
-        for (Map.Entry<Menu, Integer> entry: orderData.getOrder().entrySet()) {
+        for (Map.Entry<Menu, Integer> entry : orderData.getOrder().entrySet()) {
             total += entry.getValue();
-            if (!flag && !entry.getKey().getType().equals("음료")) flag = true;
+            if (!flag && !entry.getKey().getType().equals("음료"))
+                flag = true;
         }
         if (total > 20) {
             throw new IllegalArgumentException(Error.MENU_TOO_MANY.getMessage());

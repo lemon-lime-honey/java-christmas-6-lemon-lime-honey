@@ -2,7 +2,9 @@ package christmas.order;
 
 import java.util.EnumMap;
 import java.util.Map;
-import christmas.input.Error;
+
+import christmas.enums.Error;
+import christmas.enums.Menu;
 
 public class Order {
     private Map<Menu, Integer> order = new EnumMap<>(Menu.class);
@@ -18,7 +20,7 @@ public class Order {
     public void calculate() {
         this.totalCost = 0;
 
-        for (Map.Entry<Menu, Integer> entry: order.entrySet()) {
+        for (Map.Entry<Menu, Integer> entry : order.entrySet()) {
             this.totalCost += entry.getKey().getCost() * entry.getValue();
         }
     }

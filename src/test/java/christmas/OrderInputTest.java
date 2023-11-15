@@ -1,12 +1,14 @@
 package christmas;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import christmas.input.OrderInput;
+import christmas.io.OrderInput;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
 
 class OrderInputTest extends NsTest {
     private static OrderInput orderInput;
@@ -18,8 +20,7 @@ class OrderInputTest extends NsTest {
 
         assertSimpleTest(() -> {
             runException(input);
-            assertThat(output())
-                .contains("[ERROR]");
+            assertThat(output()).contains("[ERROR]");
         });
     }
 
@@ -30,8 +31,7 @@ class OrderInputTest extends NsTest {
 
         assertSimpleTest(() -> {
             runException(input);
-            assertThat(output())
-                .contains("[ERROR]");
+            assertThat(output()).contains("[ERROR]");
         });
     }
 
@@ -42,8 +42,7 @@ class OrderInputTest extends NsTest {
 
         assertSimpleTest(() -> {
             runException(input);
-            assertThat(output())
-                .contains("[ERROR]");
+            assertThat(output()).contains("[ERROR]");
         });
     }
 
@@ -54,8 +53,7 @@ class OrderInputTest extends NsTest {
 
         assertSimpleTest(() -> {
             runException(input);
-            assertThat(output())
-                .contains("[ERROR]");
+            assertThat(output()).contains("[ERROR]");
         });
     }
 
@@ -66,11 +64,10 @@ class OrderInputTest extends NsTest {
 
         assertSimpleTest(() -> {
             runException(input);
-            assertThat(output())
-                .contains("[ERROR]");
+            assertThat(output()).contains("[ERROR]");
         });
     }
-    
+
     @DisplayName("주문 입력: 음료만 주문")
     @Test
     void onlyDrink() {
@@ -78,8 +75,7 @@ class OrderInputTest extends NsTest {
 
         assertSimpleTest(() -> {
             runException(input);
-            assertThat(output())
-                .contains("[ERROR]");
+            assertThat(output()).contains("[ERROR]");
         });
     }
 
@@ -90,8 +86,7 @@ class OrderInputTest extends NsTest {
 
         assertSimpleTest(() -> {
             runException(input);
-            assertThat(output())
-                .contains("[ERROR]");
+            assertThat(output()).contains("[ERROR]");
         });
     }
 

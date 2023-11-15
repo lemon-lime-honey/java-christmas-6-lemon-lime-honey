@@ -6,9 +6,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
-import christmas.event.Event;
-import christmas.input.Date;
-import christmas.order.Menu;
+import christmas.enums.Menu;
+import christmas.io.Date;
+import christmas.order.Event;
 import christmas.order.Order;
 
 import static org.assertj.core.api.Assertions.assertThat;

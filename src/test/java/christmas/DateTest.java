@@ -1,12 +1,14 @@
 package christmas;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import christmas.input.Date;
+import christmas.io.Date;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
 
 class DateTest extends NsTest {
     private static Date date;
