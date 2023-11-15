@@ -12,7 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class DateTest extends NsTest {
     private static Date date;
-    private static final String stop = "20";
 
     @DisplayName("날짜 입력: 범위를 벗어나는 숫자를 입력했을 때")
     @Test
@@ -20,7 +19,7 @@ class DateTest extends NsTest {
         String input = "32";
 
         assertSimpleTest(() -> {
-            run(input, stop);
+            runException(input);
             assertThat(output())
                 .contains("[ERROR]");
         });
@@ -32,7 +31,7 @@ class DateTest extends NsTest {
         String input = "Anakin";
 
         assertSimpleTest(() -> {
-            run(input, stop);
+            runException(input);
             assertThat(output()
                 .contains("[ERROR]"));
         });
@@ -41,6 +40,6 @@ class DateTest extends NsTest {
     @Override
     public void runMain() {
         date = new Date();
-        date.saveDate();
+        date.setDate();
     }
 }
