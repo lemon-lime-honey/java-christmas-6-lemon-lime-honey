@@ -16,7 +16,7 @@ public enum Message {
     TOTAL_BENEFIT_MESSAGE("<총혜택 금액>"),
     TOTAL_COST_AFTER("<할인 후 예상 결제 금액>"),
     COST("%s원"),
-    BADGE("12월 이벤트 배지"),
+    BADGE("<12월 이벤트 배지>"),
     NONE("없음");
 
     private final String message;
