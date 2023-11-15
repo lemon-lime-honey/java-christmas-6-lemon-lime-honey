@@ -44,7 +44,7 @@ public class Event {
     }
 
     private Badge findBadge(int value) {
-        Badge result = null;
+        Badge result = Badge.NONE;
         for (Badge badge: Badge.values()) {
             if (value > badge.getLimit()) {
                 result = badge;
