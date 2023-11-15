@@ -1,5 +1,6 @@
 package christmas.io;
 
+import christmas.constant.Constants;
 import christmas.constant.Error;
 import christmas.constant.Message;
 
@@ -8,7 +9,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class Date {
     private int date;
     private String day;
-    private String[] days = {"목", "금", "토", "일", "월", "화", "수"};
 
     public boolean setDate() {
         System.out.println(Message.INIT.getMessage());
@@ -45,7 +45,7 @@ public class Date {
     }
 
     private void setDay() {
-        this.day = days[this.date % 7];
+        this.day = Constants.DAYS.get(this.date % 7);
     }
 
     public int getDate() {

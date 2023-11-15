@@ -3,12 +3,12 @@ package christmas.order;
 import java.util.Map;
 
 import christmas.constant.Badge;
+import christmas.constant.Constants;
 import christmas.constant.EventType;
 import christmas.constant.Menu;
 import christmas.io.Date;
 
 public class Event {
-    private static final int eventCostLimit = 10000;
     private EventData eventData = new EventData();
     private Badge badge;
     private int discount = 0;
@@ -24,7 +24,7 @@ public class Event {
     }
 
     private boolean canRun(Order order) {
-        if (order.getTotal() < eventCostLimit)
+        if (order.getTotal() < Constants.EVENTCOSTCRITERIA)
             return false;
         return true;
     }

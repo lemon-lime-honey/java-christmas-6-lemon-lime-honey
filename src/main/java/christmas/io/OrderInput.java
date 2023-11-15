@@ -3,6 +3,7 @@ package christmas.io;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import christmas.constant.Constants;
 import christmas.constant.Error;
 import christmas.constant.Menu;
 import christmas.constant.Message;
@@ -12,7 +13,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class OrderInput {
     Order orderData;
-    String pattern = "^[가-힣]+-[0-9]+$";
 
     public boolean order() {
         System.out.println(Message.ORDER.getMessage());
@@ -49,7 +49,7 @@ public class OrderInput {
     }
 
     private void save(String data) {
-        if (!data.matches(pattern)) {
+        if (!data.matches(Constants.MENUSETPATTERN)) {
             throw new ArrayIndexOutOfBoundsException(Error.MENU_WRONG_STYLE.getMessage());
         }
         processData(data);
@@ -71,10 +71,10 @@ public class OrderInput {
         boolean flag = false;
         for (Map.Entry<Menu, Integer> entry : orderData.getOrder().entrySet()) {
             total += entry.getValue();
-            if (!flag && !entry.getKey().getType().equals("음료"))
+            if (!flag && !entry.getKey().getType().equals(Constants.MENUCRITERIA))
                 flag = true;
         }
-        if (total > 20) {
+        if (total > Constants.QUANTITYLIMIT) {
             throw new IllegalArgumentException(Error.MENU_TOO_MANY.getMessage());
         }
         if (!flag) {

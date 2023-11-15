@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+import christmas.constant.EventType;
 import christmas.constant.Menu;
 import christmas.io.Date;
 import christmas.order.Event;
@@ -37,7 +38,8 @@ class EventTest {
     void xmaxWeekday() {
         util(21, Menu.CAKE, 2, Menu.STEAK, 2);
 
-        assertThat(event.getDiscount()).isEqualTo(3000+4046+25000);
+        assertThat(event.getDiscount()).isEqualTo(EventType.XMAS.getCost(21)
+                + EventType.WEEKDAY.getCost() * 2 + EventType.GIFT.getCost());
         assertThat(event.getBadge().getName()).isEqualTo("산타");
     }
 
@@ -46,7 +48,7 @@ class EventTest {
     void weekend() {
         util(30, Menu.RIBS, 1, Menu.CHAMPAGNE, 1);
 
-        assertThat(event.getDiscount()).isEqualTo(2023);
+        assertThat(event.getDiscount()).isEqualTo(EventType.WEEKEND.getCost());
         assertThat(event.getBadge().getName()).isEqualTo("없음");
     }
 
@@ -55,8 +57,12 @@ class EventTest {
     void xmasDDay() {
         util(25, Menu.STEAK, 3, Menu.CAKE, 3);
 
-        assertThat(event.getDiscount()).isEqualTo(3400+6069+1000+Menu.GIFT.getCost());
-        assertThat(event.getAfterCost()).isEqualTo(Menu.STEAK.getCost() * 3 + Menu.CAKE.getCost() * 3 - 3400 - 6069 - 1000);
+        assertThat(event.getDiscount())
+                .isEqualTo(EventType.XMAS.getCost(25) + EventType.WEEKDAY.getCost() * 3
+                        + EventType.SPECIAL.getCost() + Menu.GIFT.getCost());
+        assertThat(event.getAfterCost()).isEqualTo(
+                Menu.STEAK.getCost() * 3 + Menu.CAKE.getCost() * 3 - EventType.XMAS.getCost(25)
+                        - EventType.WEEKDAY.getCost() * 3 - EventType.SPECIAL.getCost());
         assertThat(event.getBadge().getName()).isEqualTo("산타");
     }
 

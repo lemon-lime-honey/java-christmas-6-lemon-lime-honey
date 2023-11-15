@@ -36,7 +36,7 @@ public enum Message {
     }
 
     public String getMessage(String name, int number) {
-        if (number < 21) {
+        if (number <= Constants.QUANTITYLIMIT) {
             return String.format(message, name, number);
         }
         return String.format(message, name, df.format(number));

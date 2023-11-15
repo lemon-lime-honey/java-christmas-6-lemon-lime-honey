@@ -1,11 +1,11 @@
 package christmas.order;
 
 import java.util.Map;
-import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import christmas.constant.Constants;
 import christmas.constant.EventType;
 import christmas.constant.Menu;
 import christmas.io.Date;
@@ -22,19 +22,19 @@ public class EventData {
     }
 
     private void xmas(int date) {
-        if (date < 26) {
+        if (date <= Constants.XMASLIMIT) {
             this.eventData.put(EventType.XMAS, EventType.XMAS.getCost(date));
         }
     }
 
     private void weekday(Map<Menu, Integer> order, String day) {
-        Set<String> days = new HashSet<>(Arrays.asList("일", "월", "화", "수", "목"));
+        Set<String> days = new HashSet<>(Constants.WEEKDAY);
         if (!days.contains(day))
             return;
 
         int total = 0;
         for (Map.Entry<Menu, Integer> entry : order.entrySet()) {
-            if (entry.getKey().getType().equals("디저트")) {
+            if (entry.getKey().getType().equals(Constants.WEEKDAYCRITERIA)) {
                 total += EventType.WEEKDAY.getCost() * entry.getValue();
             }
         }
@@ -44,13 +44,13 @@ public class EventData {
     }
 
     private void weekend(Map<Menu, Integer> order, String day) {
-        Set<String> days = new HashSet<>(Arrays.asList("금", "토"));
+        Set<String> days = new HashSet<>(Constants.WEEKEND);
         if (!days.contains(day))
             return;
 
         int total = 0;
         for (Map.Entry<Menu, Integer> entry : order.entrySet()) {
-            if (entry.getKey().getType().equals("메인")) {
+            if (entry.getKey().getType().equals(Constants.WEEKENDCRITERIA)) {
                 total += EventType.WEEKEND.getCost() * entry.getValue();
             }
         }
@@ -60,13 +60,13 @@ public class EventData {
     }
 
     private void special(int date, String day) {
-        if (day.equals("일") || date == 25) {
+        if (day.equals(Constants.STARDAY) || date == Constants.STARDATE) {
             this.eventData.put(EventType.SPECIAL, EventType.SPECIAL.getCost());
         }
     }
 
     private void gift(int cost) {
-        if (cost < 120000)
+        if (cost < Constants.GIFTCRITERIA)
             return;
         this.eventData.put(EventType.GIFT, EventType.GIFT.getCost());
     }
