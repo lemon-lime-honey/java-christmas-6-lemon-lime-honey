@@ -41,7 +41,7 @@ public class OrderInput {
             String ipt = Console.readLine();
             String[] rawData = ipt.split(",");
             for (String data : rawData) {
-                save(data);
+                save(data.trim());
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new ArrayIndexOutOfBoundsException(Error.MENU_WRONG_STYLE.getMessage());
